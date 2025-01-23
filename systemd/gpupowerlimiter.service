@@ -1,0 +1,14 @@
+# /lib/systemd/system/gpupowerlimiter.service
+
+[Unit]
+Description="Limit Nvidia GPU power at each reboot using nvidia-smi"
+
+[Service]
+User=root
+Group=root
+ExecStartPre=/usr/bin/nvidia-smi -i 0 -pm ENABLED
+# limits to 300 watts
+ExecStart=/usr/bin/nvidia-smi -pl 300
+
+[Install]
+WantedBy=multi-user.target

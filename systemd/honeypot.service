@@ -1,0 +1,12 @@
+# /lib/systemd/system/honeypot.service
+
+[Unit]
+Description="Overcome permission denied acces when starting endlessh service."
+
+[Service]
+User=root
+Group=root
+ExecStart=/usr/bin/endlessh
+
+[Install]
+WantedBy=multi-user.target
